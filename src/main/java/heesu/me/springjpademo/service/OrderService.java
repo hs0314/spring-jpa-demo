@@ -1,9 +1,6 @@
 package heesu.me.springjpademo.service;
 
-import heesu.me.springjpademo.domain.Delivery;
-import heesu.me.springjpademo.domain.Member;
-import heesu.me.springjpademo.domain.Order;
-import heesu.me.springjpademo.domain.OrderItem;
+import heesu.me.springjpademo.domain.*;
 import heesu.me.springjpademo.domain.item.Item;
 import heesu.me.springjpademo.repository.ItemRepository;
 import heesu.me.springjpademo.repository.MemberRepository;
@@ -11,6 +8,8 @@ import heesu.me.springjpademo.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -66,10 +65,14 @@ public class OrderService {
         order.cancel();
     }
 
-    /*
-    public List<Order> findOrders(OrderSearch params){
 
+    /**
+     * 주문 검색
+     * @param orderSearch
+     * @return
+     */
+    public List<Order> findOrders(OrderSearch orderSearch){
+        return orderRepository.findAllByString(orderSearch);
     }
 
-     */
 }
