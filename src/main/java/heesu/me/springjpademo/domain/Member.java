@@ -7,6 +7,7 @@ import lombok.Setter;
 import heesu.me.springjpademo.domain.Address;
 import heesu.me.springjpademo.domain.Order;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
+    @NotEmpty
     private String name;
 
     @Embedded
